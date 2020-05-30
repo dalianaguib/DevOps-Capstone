@@ -8,6 +8,7 @@ Project Tasks:
 6 Building Docker containers in pipelines
 
 About Project:
+
 I created a CI/CD pipeline for a basic website that deploys to a cluster in AWS EKS which is Blue/Green Deployment.
 
 screenshots found in screenshots folder
