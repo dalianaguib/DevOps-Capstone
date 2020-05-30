@@ -10,12 +10,9 @@ pipeline {
 		
 		stage('Build Docker Image') {
 			steps {
-				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
+				withCredentials([[$class: 'usernamePassword', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
 					sh '''
-						 sh 'echo $PASSWORD'
-  
-                         echo USERNAME
- 
+						
                          echo "username is $USERNAME"
 					'''
 				}
