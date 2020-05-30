@@ -2,34 +2,34 @@ pipeline {
 	agent any
 	stages {
 
-		//stage('Lint HTML') {
-		//	steps {
-		//		sh 'tidy -q -e *.html'
-		//	}
-		//}
+		stage('Lint HTML') {
+			steps {
+				sh 'tidy -q -e *.html'
+			}
+		}
 		
 		
 		
-		//stage('Build Docker Image') {
-		//	steps {
-		//			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
-		//			sh '''
-		//				docker build -t dalianaguib/capstone .
-		//			'''
-		//		}
-		//	}
-		//}
+		stage('Build Docker Image') {
+			steps {
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
+					sh '''
+						docker build -t dalianaguib/capstone .
+					'''
+				}
+			}
+		}
 
-		//stage('Push Image To Dockerhub') {
-		//	steps {
-		//		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
-		//			sh '''
-		//				docker login -u $USERNAME -p $PASSWORD
-		//				docker push dalianaguib/capstone
-		//			'''
-		//		}
-		//	}
-		//}
+		stage('Push Image To Dockerhub') {
+			steps {
+				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
+					sh '''
+						docker login -u $USERNAME -p $PASSWORD
+						docker push dalianaguib/capstone
+					'''
+				}
+			}
+		}
 
 		stage('Set current kubectl context') {
 			steps {
